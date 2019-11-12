@@ -29,12 +29,12 @@ module.exports = (resolve, rootDir) => {
     setupFilesAfterEnv: setupTestsFile,
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
-      '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
+      '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}'
     ],
     testEnvironment: 'jsdom',
     testURL: 'http://localhost',
     transform: {
-      '^.+\\.(js|jsx|ts|tsx)$': resolve('config/jest/typescriptTransform.js'),
+      '^.+\\.(js|jsx|ts|tsx)$': resolve('config/jest/babelTransform.js'),
       '^.+\\.css$': resolve('config/jest/cssTransform.js'),
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': resolve(
         'config/jest/fileTransform.js'
@@ -42,7 +42,7 @@ module.exports = (resolve, rootDir) => {
     },
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
-      '^.+\\.module\\.(css|sass|scss)$',
+      '^.+\\.module\\.(css|sass|scss)$'
     ],
     moduleNameMapper: {
       '^react-native$': 'react-native-web',
@@ -62,12 +62,7 @@ module.exports = (resolve, rootDir) => {
       'json',
       'node',
       'mjs'
-    ],
-    globals: {
-      'ts-jest': {
-        tsConfig: paths.appTsTestConfig
-      }
-    }
+    ]
   };
   if (rootDir) {
     config.rootDir = rootDir;
